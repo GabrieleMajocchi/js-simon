@@ -1,6 +1,8 @@
 
 const clock = setInterval (countdown, 900, 26, 9, 30);
 
+
+const title = document.querySelector('#title');
 let counterdays = document.querySelector('.counter-day');
 let counterhours = document.querySelector('.counter-hours');
 let counterminutes = document.querySelector('.counter-minutes');
@@ -35,7 +37,7 @@ function countdown (datenumber, hours, minutes){
         missMin = minutes - date.getMinutes() - 1;
         missSec = 59 - date.getSeconds();
         if(missDay < 0 || missHours < 0 || missMin < 0){
-            alert("E' l'ora della correzioneeeeee!!");
+            title.innerHTML = "<h1>E' l'ora della correzione</h1>";
             clearInterval(clock);
             counterdays.innerHTML = '0';
             counterhours.innerHTML = '0';
