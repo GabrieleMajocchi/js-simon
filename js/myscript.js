@@ -1,6 +1,11 @@
 
 const clock = setInterval (countdown, 900, 26, 9, 30);
 
+let counterdays = document.querySelector('.counter-day');
+let counterhours = document.querySelector('.counter-hours');
+let counterminutes = document.querySelector('.counter-minutes');
+let counterseconds = document.querySelector('.counter-seconds');
+
 /**
  * Function that give you a countdown from now untill the day, hour and minutes you choose
  * @param {number} datenumber The number of the day where will finish the countdown
@@ -13,18 +18,35 @@ function countdown (datenumber, hours, minutes){
     let missHours;
     let missMin;
     let missSec;
-    if(missDay === 1){
-        missHours = 24 - date.getHours();
-        missMin = 60 - date.getMinutes();
+    if(missDay >= 1){
+        missHours= (24 - date.getHours())+hours -1;
+        missMin = (60 - date.getMinutes())+minutes -1;
+        if(missMin >= 60){
+            missMin = missMin - 60;
+            missHours = missHours + 1;
+        }
         missSec = 60 - date.getSeconds();
-    }else if (missDay === 0){
+        counterdays.innerHTML = missDay-1;
+        counterhours.innerHTML = missHours;
+        counterminutes.innerHTML = missMin;
+        counterseconds.innerHTML = missSec;
+    }else if (missDay <= 0){
         missHours = hours - date.getHours();
-        missMin = minutes - date.getMinutes();
+        missMin = minutes - date.getMinutes() - 1;
         missSec = 59 - date.getSeconds();
-        if(missDay === 0 && missHours === 0 && missMin === 0 && missSec === 0){
-            console.log('FINITOOOOO IL COUNTDOWN!!!');
+        if(missDay < 0 || missHours < 0 || missMin < 0){
+            alert("E' l'ora della correzioneeeeee!!");
             clearInterval(clock);
+            counterdays.innerHTML = '0';
+            counterhours.innerHTML = '0';
+            counterminutes.innerHTML = '0';
+            counterseconds.innerHTML = '0';
+        }else{
+            counterdays.innerHTML = missDay;
+            counterhours.innerHTML = missHours;
+            counterminutes.innerHTML = missMin;
+            counterseconds.innerHTML = missSec;
         }
     }
-    console.log(missDay, missHours, missMin, missSec)
+    
 }
