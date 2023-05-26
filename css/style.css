@@ -2,6 +2,7 @@ body{
     background-color: #635E8F;
     color: white;
 }
+
 .counter{
     color: #111;
     font-family: 'Space Grotesk', sans-serif;
@@ -12,6 +13,7 @@ body{
     position: relative;
     z-index: 1;
 }
+
 .counter:before,
 .counter:after{
     content: '';
@@ -25,12 +27,14 @@ body{
     right: 0;
     z-index: -1;
 }
+
 .counter:after{
     background: linear-gradient(var(--color2),var(--color1));
     height: 93px;
     border-radius: 0 0 150px 150px;
     bottom: auto;
 }
+
 .counter .counter-value{
     color: #fff;
     background: linear-gradient(var(--color1),var(--color2));
@@ -43,6 +47,7 @@ body{
     border-radius: 50%;
     display: block;
 }
+
 .counter h3{
     font-size: 16px;
     font-weight: 600;

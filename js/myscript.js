@@ -1,7 +1,7 @@
 
 const clock = setInterval (countdown, 900, 26, 9, 30);
 
-
+const music = document.querySelector('.music');
 const title = document.querySelector('#title');
 let counterdays = document.querySelector('.counter-day');
 let counterhours = document.querySelector('.counter-hours');
@@ -38,6 +38,7 @@ function countdown (datenumber, hours, minutes){
         missSec = 59 - date.getSeconds();
         if(missDay < 0 || missHours < 0 || missMin < 0){
             title.innerHTML = "<h1>E' l'ora della correzione</h1>";
+            music.innerHTML = '<embed src="win.mp3" autostart="true"></embed>'
             clearInterval(clock);
             counterdays.innerHTML = '0';
             counterhours.innerHTML = '0';
