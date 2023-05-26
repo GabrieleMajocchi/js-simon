@@ -1,5 +1,5 @@
 
-const clock = setInterval (countdown, 900, 26, 9, 30);
+const clock = setInterval (countdown, 850, 26, 9, 30);
 
 const music = document.querySelector('.music');
 const title = document.querySelector('#title');
@@ -8,6 +8,7 @@ let counterhours = document.querySelector('.counter-hours');
 let counterminutes = document.querySelector('.counter-minutes');
 let counterseconds = document.querySelector('.counter-seconds');
 let startmusic = 0;
+let startcountdown = 0;
 
 /**
  * Function that give you a countdown from now untill the day, hour and minutes you choose
@@ -37,7 +38,7 @@ function countdown (datenumber, hours, minutes){
         missHours = hours - date.getHours();
         missMin = minutes - date.getMinutes() - 1;
         missSec = 59 - date.getSeconds();
-        if(missDay < 0 || missHours < 0 || missMin < 0){
+        if((missDay <= 0)&&(missHours <= 0)&&(missMin < 0)){
             title.innerHTML = "<h1>E' l'ora della correzione</h1>";
             startmusic = 1;
             music.innerHTML = '<audio hidden controls autoplay id="myAudio"> <source src= "win.mp3" type="audio/mpeg"> </audio>';
@@ -46,7 +47,14 @@ function countdown (datenumber, hours, minutes){
             counterhours.innerHTML = '0';
             counterminutes.innerHTML = '0';
             counterseconds.innerHTML = '0';
-        }else{
+        }else if((startcountdown === 0)&&(missDay <= 0)&&(missHours <= 0)&&(missMin <= 0)&&(missSec < 11)){
+            music.innerHTML = '<audio hidden controls autoplay id="myAudio"> <source src= "sec.mp3" type="audio/mpeg"> </audio>';
+            startcountdown = 1;
+        }else if((startmusic === 0)&&(missDay <= 0)&&(missHours <= 0)&&(missMin <= 5)){
+            music.innerHTML = '<audio hidden controls autoplay id="myAudio"> <source src= "finalcountdown.mp3" type="audio/mpeg"> </audio>';
+            startmusic = 1;
+        }
+        else{
             counterdays.innerHTML = missDay;
             counterhours.innerHTML = missHours;
             counterminutes.innerHTML = missMin;
