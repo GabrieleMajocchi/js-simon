@@ -1,5 +1,5 @@
 
-const clock = setInterval (countdown, 900, 26, 9, 30);
+const clock = setInterval (countdown, 900, 26, 9, 58);
 
 const music = document.querySelector('.music');
 const title = document.querySelector('#title');
@@ -7,6 +7,7 @@ let counterdays = document.querySelector('.counter-day');
 let counterhours = document.querySelector('.counter-hours');
 let counterminutes = document.querySelector('.counter-minutes');
 let counterseconds = document.querySelector('.counter-seconds');
+let startmusic = 0;
 
 /**
  * Function that give you a countdown from now untill the day, hour and minutes you choose
@@ -38,7 +39,8 @@ function countdown (datenumber, hours, minutes){
         missSec = 59 - date.getSeconds();
         if(missDay < 0 || missHours < 0 || missMin < 0){
             title.innerHTML = "<h1>E' l'ora della correzione</h1>";
-            music.innerHTML = '<embed src="win.mp3" autostart="true"></embed>'
+            startmusic = 1;
+            music.innerHTML = '<audio hidden controls autoplay id="myAudio"> <source src= "win.mp3" type="audio/mpeg"> </audio>';
             clearInterval(clock);
             counterdays.innerHTML = '0';
             counterhours.innerHTML = '0';
@@ -51,5 +53,9 @@ function countdown (datenumber, hours, minutes){
             counterseconds.innerHTML = missSec;
         }
     }
-    
+
+    if(startmusic === 0){
+        music.innerHTML = '<audio hidden controls loop autoplay id="myAudio"> <source src= "skyfall.mp3" type="audio/mpeg"> </audio>';
+        startmusic = 1;
+    }
 }
