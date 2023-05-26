@@ -1,5 +1,5 @@
 
-const clock = setInterval (countdown, 900, 26, 9, 58);
+const clock = setInterval (countdown, 900, 26, 9, 30);
 
 const music = document.querySelector('.music');
 const title = document.querySelector('#title');
