@@ -1,5 +1,9 @@
 
-const clock = setInterval (countdown, 850, 26, 11, 51);
+const when = parseInt(prompt('Scrivi il numero del giorno di questo mese nel quale vuoi mettere il countdown:'));
+const hour = parseInt(prompt("Scrivi l'ora nel quale vuoi mettere il countdown:"));
+const min = parseInt(prompt("Scrivi il minuto nel quale vuoi mettere il countdown:"));
+
+const clock = setInterval (countdown, 850, when, hour, min);
 
 const music = document.querySelector('.music');
 const title = document.querySelector('#title');
